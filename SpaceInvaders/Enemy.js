@@ -7,7 +7,7 @@ export default class Enemy {
         this.height = 32;
 
         this.image = new Image()
-        this.image.src = `images/enemy${imageNumber}.png`  // tengo problemmas con el dolar <solucinado>
+        this.image.src = `images/enemy${imageNumber}.png`  
     }
 
     draw(ctx) {
