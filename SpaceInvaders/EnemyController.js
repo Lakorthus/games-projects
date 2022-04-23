@@ -3,12 +3,12 @@ import MovingDirection from "./MovingDirection.js";
 
 export default class EnemyController {
     enemyMap = [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [2, 2, 2, 3, 3, 3, 3, 2, 2, 2],
-        [2, 2, 2, 3, 3, 3, 3, 2, 2, 2],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        [1, 1, 3, 3, 3, 1, 3, 1, 3, 1],
+        [1, 1, 1, 3, 1, 1, 3, 1, 3, 1],
+        [2, 2, 2, 3, 2, 2, 3, 2, 3, 2],
+        [2, 2, 2, 3, 2, 2, 3, 2, 3, 2],
+        [1, 3, 1, 3, 1, 1, 3, 1, 3, 1],
+        [1, 3, 3, 3, 1, 1, 1, 3, 1, 1],
     ];
 
     enemyRows = [];
@@ -67,7 +67,7 @@ export default class EnemyController {
             const enemyIndex = Math.floor(Math.random() * allEnemies.length);
             const enemy = allEnemies[enemyIndex];
             this.enemyBulletController.shoot(enemy.x + enemy.width/2, enemy.y, -3);
-            console.log(enemyIndex);
+            
         }
     }
 
@@ -144,5 +144,9 @@ export default class EnemyController {
                 } 
             });
         });
+    }
+
+    collideWith(sprite) {
+        return this.enemyRows.flat().some((enemy) => enemy.collideWith(sprite));
     }
 }
